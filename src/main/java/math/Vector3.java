@@ -69,12 +69,24 @@ public class Vector3 {
         return other.getX() * this.getX() + other.getY() * this.getY() + this.getZ() * other.getZ();
     }
 
+    public static Vector3 crossProduct(Vector3 a, Vector3 b) {
+        double newX = a.y*b.z - b.y*a.z; // a2*b3 - b2*a3
+        double newY = a.z*b.x - b.z*a.x; // a3*b1 - b3*a1
+        double newZ = a.x*b.y - b.x*a.y; // a1*b2 - b1*a2
+        return new Vector3(newX, newY, newZ);
+    }
+
     public static double dotProduct(Vector3 a, Vector3 b) {
         return a.dotProduct(b);
     }
 
     public double getDistance(Vector3 other) {
         return Math.sqrt( Math.pow(other.getX() - x, 2) + Math.pow(other.getY() - y, 2) + Math.pow(other.getZ() - z, 2));
+    }
+
+    public static Vector3 vectorFromPoints(Vector3 pointA, Vector3 pointB) {
+        // creates a Vector from A to B
+        return new Vector3(pointB.x - pointA.x, pointB.y - pointA.y, pointB.z - pointA.z);
     }
 
     public void setX(double x) { this.x = x; }
@@ -130,6 +142,16 @@ class ImmutableVector3 extends Vector3 {
 
     @Override
     public void setY(double y) {
+        throw new IllegalStateException("Read only");
+    }
+
+    @Override
+    public void setZ(double z) {
+        throw new IllegalStateException("Read only");
+    }
+
+    @Override
+    public void setValues(double x, double y, double z) {
         throw new IllegalStateException("Read only");
     }
 }

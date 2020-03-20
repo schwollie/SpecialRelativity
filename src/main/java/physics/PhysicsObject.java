@@ -8,8 +8,9 @@ public class PhysicsObject {
     Matrix coordinates; // [c*t, x, y, z]
     Vector3 velocity;
 
-    public PhysicsObject() {
-
+    public PhysicsObject(Matrix coordinates, Vector3 velocity) {
+        this.coordinates = coordinates;
+        this.velocity = velocity;
     }
 
 

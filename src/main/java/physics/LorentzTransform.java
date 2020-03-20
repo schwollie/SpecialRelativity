@@ -1,5 +1,6 @@
 package physics;
 
+import sandbox.Consts;
 import math.Matrix;
 import math.Vector3;
 
@@ -54,13 +55,12 @@ public abstract class LorentzTransform {
     public static void main(String[] args) {
         // Test
         Matrix X = new Matrix( new double[][] { {1*Consts.c, 0, 0, 0} });
-        Vector3 v = new Vector3(0, 299792455.0*0.5, 0);
+        Vector3 v = new Vector3(0, Consts.c*0.1, 0);
         Matrix m = doLorentzTransform(X, v);
 
         m.show();
 
-        System.out.println("Time: " + m.getAt(0, 0));
+        System.out.println("Time: " + m.getAt(0, 0)/Consts.c);
     }
-
 
 }

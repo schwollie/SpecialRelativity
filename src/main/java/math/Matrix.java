@@ -103,7 +103,7 @@ final public class Matrix {
     // return C = A * B
     public Matrix matmul(Matrix B) {
         Matrix A = this;
-        if (A.N != B.M) throw new RuntimeException("Illegal matrix dimensions: ");
+        if (A.N != B.M) throw new RuntimeException("Illegal matrix dimensions. A: " + A.M + " x " + A.N + " |  B: " + B.M + " x " + B.N );
         Matrix C = new Matrix(A.M, B.N);
         for (int i = 0; i < C.M; i++)
             for (int j = 0; j < C.N; j++)
